@@ -1,4 +1,4 @@
-# Prerequisites
+# Requirements
 
 ```
 Ruby 2.7.2
