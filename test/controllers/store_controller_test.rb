@@ -10,4 +10,18 @@ class StoreControllerTest < ActionDispatch::IntegrationTest
     assert_select 'h2', 'Programming Ruby 1.9'
     assert_select '.price', /\$[,\d]+\.\d\d/
   end
+
+  test "sidebar should contain current date" do
+    get store_index_url
+    assert_response :success
+
+    assert_select '#current-date'
+  end
+
+  test "title should exist" do
+    get store_index_url
+    assert_response :success
+
+    assert_select 'h1', 'Your Progmatic Catalog'
+  end
 end

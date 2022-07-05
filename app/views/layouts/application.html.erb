@@ -12,7 +12,7 @@
 
   <body>
     <header class="main">
-      <%= image_tag 'logo.svg', alt: 'The Pragmativ Bookshelf' %>
+      <%= image_tag 'logo.svg', alt: 'The Pragmatic Bookshelf' %>
       <h1><%= @page_title %></h1>
     </header>
 
@@ -25,6 +25,9 @@
           <li><a href="/news">News</a></li>
           <li><a href="/contact">Contact</a></li>
         </ul>
+        <p>
+          <span id="current-date" style="background-color: #FFF; padding: 2px; border-radius: 2px;"><%= Date.today %></span>
+        </p>
       </nav>
 
       <main class="<%= controller.controller_name %>">
