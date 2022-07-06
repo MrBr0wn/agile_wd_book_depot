@@ -2,6 +2,10 @@
 	<aside id="notice"><%= notice %></aside>
 <% end %>
 
+<% if session[:counter] > 5 %>
+	<aside id="notice">Visited this page <%= pluralize(session[:counter], 'time') %></aside>
+<% end %>
+
 <h1>Your Progmatic Catalog</h1>
 
 <ul class="catalog">
