@@ -9,6 +9,7 @@ class CartsController < ApplicationController
 
   # GET /carts/1 or /carts/1.json
   def show
+    raise ActiveRecord::RecordNotFound unless session[:cart_id] == @cart.id
   end
 
   # GET /carts/new

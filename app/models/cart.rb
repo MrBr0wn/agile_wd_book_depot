@@ -6,6 +6,8 @@ class Cart < ApplicationRecord
 
 		if current_item
 			current_item.quantity += 1
+			# byebug
+			current_item.price += current_item.price
 		else
 			current_item = line_items.build(product_id: product.id)
 		end
