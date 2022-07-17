@@ -3,8 +3,10 @@
 <% else %>
 	<tr>
 <% end %>
+	<td><%= button_to '-', "/line_items/decrement/#{line_item.id}", method: :get %></td>
 	<td class="quantity"><%= line_item.quantity %></td>
+	<td><%= button_to '+', '#' %></td>
 	<td><%= line_item.product.title %></td>
 	<td class="price"><%= number_to_currency(line_item.total_price) %></td>
-	<td><%= button_to 'X', line_item, method: :delete, remote: true %></td>
+	<td><%= button_to 'X', line_item, method: :delete, remote: true, title: 'Delete item' %></td>
 </tr>

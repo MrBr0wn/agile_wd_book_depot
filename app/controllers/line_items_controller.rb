@@ -2,7 +2,7 @@ class LineItemsController < ApplicationController
   include CurrentCart
 
   before_action :set_cart, only: [:create]
-  before_action :set_line_item, only: %i[ show edit update destroy ]
+  before_action :set_line_item, only: %i[ show edit update destroy]
   after_action :reset_counter, only: [:create]
 
   # GET /line_items or /line_items.json
@@ -60,6 +60,29 @@ class LineItemsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to cart_path(session[:cart_id]), notice: "Line item was successfully destroyed." }
       format.json { head :no_content }
+    end
+  end
+
+  def decrement
+    @line_item = LineItem.find(params[:id])
+    # byebug
+    if @line_item && @line_item.quantity > 1 && session[:cart_id]
+      respond_to do |format|
+        if @line_item.decrement!(:quantity)
+          format.html { redirect_to store_index_url, notice: "Line item was successfully updated." }
+          format.json { head :no_content, status: :ok, location: @line_item }
+        else
+          format.html { redirect_to cart_path(session[:cart_id]), status: :unprocessable_entity }
+          format.json { render json: @line_item.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      @line_item.destroy
+
+      respond_to do |format|
+        format.html { redirect_to cart_path(session[:cart_id]), notice: "Line item was successfully destroyed." }
+        format.json { head :no_content }
+      end
     end
   end
 

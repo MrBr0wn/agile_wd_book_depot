@@ -43,6 +43,7 @@ class ProductsController < ApplicationController
 
         @products = Product.all.order(:title)
         ActionCable.server.broadcast 'products_channel', html: render_to_string('store/index', layout: false)
+        ActionCable.server.broadcast "products_#{product_params.id}_channel", body: 'test ac')
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @product.errors, status: :unprocessable_entity }

@@ -11,9 +11,10 @@ document.addEventListener('turbolinks:load', () => {
     },
 
     received(data) {
-      const storeElement = document.querySelector("main.store")
+      const storeElement = document.querySelector("main.store");
+
       if (storeElement) {
-        storeElement.innerHTML = data.html
+        storeElement.innerHTML = data.html;
       }
     }
   });
