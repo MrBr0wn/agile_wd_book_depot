@@ -2,7 +2,7 @@
 	<aside id="notice"><%= notice %></aside>
 <% end %>
 
-<% if session[:counter] > 5 %>
+<% if session[:counter] && session[:counter] > 5 %>
 	<aside id="notice">Visited this page <%= pluralize(session[:counter], 'time') %></aside>
 <% end %>
 

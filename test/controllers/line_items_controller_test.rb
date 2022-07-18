@@ -35,7 +35,7 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
       delete line_item_url(@line_item)
     end
 
-    assert_redirected_to line_items_url
+    assert_redirected_to cart_url(session[:cart_id])
   end
 
   test "should create line_item" do
@@ -64,6 +64,6 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_response :success
-    assert_match /<tr class=\\"line-item-highlight"/, @response.body
+    assert_match /line-item-highlight/, @response.body
   end
 end
