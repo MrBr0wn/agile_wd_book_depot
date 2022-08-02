@@ -102,6 +102,15 @@ header.main {
       margin: 0; // desktop doesn't need this margin
     }
   }
+  .actions {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+
+    form {
+      padding-left: 1em;
+    }
+  }
 }
 
 .depot_form {
