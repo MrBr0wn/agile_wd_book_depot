@@ -21,7 +21,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       
       - name: Gem cache
-        id: cahce-bundle
+        id: cache-bundle
         uses: actions/cache@v1
         with:
           path: vendor/bundle
@@ -33,6 +33,7 @@ jobs:
         run: |
           gem install bundler
           bundle install --jobs 4 --retry 3 --path vendor/bundle
+
       - name: Install Yarn
         run: npm install -g yarn
 
