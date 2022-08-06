@@ -47,9 +47,12 @@ jobs:
 
       - name: Yarn install
         run: yarn install
+        
+      - name: Set up database schema
+        run: bin/rails db:schema:load
 
       - name: Run tests
         env:
           RAILS_ENV: test
         run: |
-          bundle exec rake test
+          bin/rake test
