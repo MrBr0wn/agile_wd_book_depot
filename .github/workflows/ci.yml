@@ -1,8 +1,6 @@
 name: CI
 
-on:
-  - push
-  - pull_request
+on: [push]
 
 jobs:
   test:
@@ -11,51 +9,45 @@ jobs:
     container:
       image: ruby:2.7.2
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '14.x'
-          registry-url: 'https://registry.npmjs.org'
-      
-      - name: Gem cache
-        id: cache-bundle
-        uses: actions/cache@v1
-        with:
-          path: vendor/bundle
-          key: bundle-${{ hashFiles('**/Gemfile.lock') }}
-      
-      - name: Bundle install
-        env:
-          RAILS_ENV: test
-        run: |
-          gem install bundler
-          bundle install --jobs 4 --retry 3 --path vendor/bundle
+    - uses: actions/checkout@v1
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '14.x'
+        registry-url: 'https://registry.npmjs.org'
 
-      - name: Install Yarn
-        run: npm install -g yarn
+    - name: Gem cache
+      id: cache-bundle
+      uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: bundle-${{ hashFiles('**/Gemfile.lock') }}
 
-      - name: Get yarn cache dir
-        id: yarn-cache-dir
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+    - name: Bundle install
+      env:
+        RAILS_ENV: test
+      run: |
+        gem install bundler
+        bundle install --jobs 4 --retry 3 --path vendor/bundle
+    - name: Install yarn
+      run: npm install -g yarn
 
-      - name: Yarn cache
-        id: cache-yarn
-        uses: actions/cache@v1
-        with:
-          path: ${{ steps.yarn-cache-dir.outputs.dir }}
-          key: yarn-${{ hashFiles('**/yarn.lock') }}
+    # NOTE: Yarn cache doesn't seem to be working quite yet
+    - name: Get yarn cache dir
+      id: yarn-cache-dir
+      run: echo "::set-output name=dir::$(yarn cache dir)"
 
-      - name: Yarn install
-        run: yarn install
-        
-      - name: Set up database schema
-        env:
-          RAILS_ENV: test
-        run: |
-          bin/rake db:schema:load
+    - name: Yarn cache
+      id: cache-yarn
+      uses: actions/cache@v1
+      with:
+        path: ${{ steps.yarn-cache-dir.outputs.dir }}
+        key: yarn-${{ hashFiles('**/yarn.lock') }}
 
-      - name: Run tests
-        env:
-          RAILS_ENV: test
-        run: |
-          bin/rake test
+    - name: Yarn install
+      run: yarn install
+
+    - name: Run tests
+      env:
+        RAILS_ENV: test
+      run: |
+        bundle exec test
