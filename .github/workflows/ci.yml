@@ -52,7 +52,7 @@ jobs:
         env:
           RAILS_ENV: test
         run: |
-          bin/rails db:schema:load
+          bin/rake db:schema:load
 
       - name: Run tests
         env:
