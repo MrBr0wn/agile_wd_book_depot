@@ -37,7 +37,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1 or /users/1.json
   def update
     respond_to do |format|
-      if @user.update(user_params)
+      if @user.try!(:authenticate, params[:user][:current_password]) && @user.update(user_params)
         format.html { redirect_to users_url, notice: "User #{@user.name} was successfully updated." }
         format.json { render :show, status: :ok, location: @user }
       else

@@ -44,4 +44,14 @@ class UsersTest < ApplicationSystemTestCase
 
     assert_text "User was successfully destroyed"
   end
+
+  test "checking authorization" do
+    visit users_url
+    assert_text @user.name
+
+    visit logout_url
+    visit users_url
+
+    assert_no_text @user.name
+  end
 end
