@@ -1,3 +1,5 @@
+![CI](https://github.com/MrBr0wn/agile_wd_book_depot/actions/workflows/ci.yml/badge.svg)
+
 # Requirements
 
 ```

@@ -1,0 +1,51 @@
+name: CI
+
+on: [push]
+
+jobs:
+  test:
+    name: "tests"
+    runs-on: ubuntu-latest
+    container:
+      image: ruby:2.7.2
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '14.x'
+        registry-url: 'https://registry.npmjs.org'
+
+    - name: Gem cache
+      id: cache-bundle
+      uses: actions/cache@v1
+      with:
+        path: 'vendor/bundle'
+        key: bundle-${{ hashFiles('**/Gemfile.lock') }}
+        
+    - name: Install yarn
+      run: npm install -g yarn
+
+    # NOTE: Yarn cache doesn't seem to be working quite yet
+    - name: Get yarn cache dir
+      id: yarn-cache-dir
+      run: echo "::set-output name=dir::$(yarn cache dir)"
+
+    - name: Yarn cache
+      id: cache-yarn
+      uses: actions/cache@v1
+      with:
+        path: ${{ steps.yarn-cache-dir.outputs.dir }}
+        key: yarn-${{ hashFiles('**/yarn.lock') }}
+
+    - name: Yarn install
+      run: yarn install
+
+    - name: Run tests
+      env:
+        RAILS_ENV: test
+      run: |
+        gem install bundler
+        bundle install --jobs 4 --retry 3
+        bundle exec rails db:create
+        bundle exec rails db:migrate
+        bundle exec rails test
