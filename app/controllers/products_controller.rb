@@ -3,7 +3,8 @@ class ProductsController < ApplicationController
 
   # GET /products or /products.json
   def index
-    @products = Product.all.order(:title)
+    @products = session[:locale] ? Product.where(locale: session[:locale]).order(:title) : Product.all.order(:title)
+    @products = Product.all.order(:title) if Product.all.any? { |product| product.locale.nil? }
   end
 
   # GET /products/1 or /products/1.json
@@ -43,7 +44,6 @@ class ProductsController < ApplicationController
 
         @products = Product.all.order(:title)
         ActionCable.server.broadcast 'products_channel', html: render_to_string('store/index', layout: false)
-        # ActionCable.server.broadcast "products_#{product_params.id}_channel", body: 'test ac'
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @product.errors, status: :unprocessable_entity }
@@ -80,6 +80,6 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:title, :description, :image_url, :price)
+      params.require(:product).permit(:title, :description, :image_url, :price, :locale)
     end
 end
