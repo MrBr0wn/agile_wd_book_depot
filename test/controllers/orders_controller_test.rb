@@ -20,7 +20,7 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
                                 }
     end
 
-    assert_redirected_to store_index_url
+    assert_redirected_to store_index_url(locale: 'en')
   end
 
   test "should show order" do

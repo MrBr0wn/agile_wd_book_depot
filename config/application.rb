@@ -19,5 +19,8 @@ module AgileWdBookDepot
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
     config.filter_parameters += [ :credit_card_number ]
+
+    # config.middleware.use I18n::JS::Middleware
+    config.i18n.available_locales = [:en, :ru]
   end
 end
