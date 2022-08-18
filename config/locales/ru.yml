@@ -1,0 +1,70 @@
+ru:
+  hello: "Мир, я тебя категорически приветствую"
+
+  layouts:
+    application:
+      title: "The Pragmatic Bookshelf"
+      home: "Домой"
+      questions: "Вопросы"
+      news: "Новости"
+      contact: "Контакты"
+  store:
+    index:
+      title_html: "Ваш каталог"
+      add_html: "В корзину"
+  carts:
+    cart:
+      title: "Ваша корзина"
+      empty: "Очистить"
+      checkout: "Оформить"
+  number:
+    currency:
+      format:
+        unit: "RUB"
+        precision: 2
+        separator: "."
+        delimiter: ","
+        format: "%n&nbsp;%u"
+  orders:
+    new:
+      legend: "Заполните данные для заказа"
+    form:
+      name: "Имя"
+      address_html: "Адрес доставки"
+      email: "E-mail"
+      pay_type: "Тип платежа"
+      pay_prompt_html: "Виберите метод оплаты"
+      submit: "Оформить заказ"
+      pay_types:
+        check: "Чек"
+        credit_card: "Кредитная карта"
+        purchase_order: "Purchase Order"
+      check_pay_type:
+        routing_number: "Маршрут #"
+        account_number: "Аккаунт #"
+      credit_card_pay_type:
+        cc_number: "CC #"
+        expiration_date: "Expiry"
+      purchase_order_pay_type:
+        po_number: "PO #"
+  activerecord:
+    errors:
+      messages:
+        inclusion: "Не входит в список"
+        blank: "Не может быть пустым"
+    models:
+      order: "Заказ"
+    attributes:
+      order:
+        address: "Адрес"
+        name: "Имя"
+        email: "E-mail"
+        pay_type: "Тип платежа"
+
+  errors:
+    template:
+      body: "Есть проблемы со следующими полями:"
+      header:
+        one: "1 ошибка не позволила сохранить этот %{model}"
+        other: "%{count} ошибки не позволили сохранить этот %{model}"
+  thanks: "Спасибо за заказ"
