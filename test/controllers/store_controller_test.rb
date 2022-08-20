@@ -22,6 +22,6 @@ class StoreControllerTest < ActionDispatch::IntegrationTest
     get store_index_url
     assert_response :success
 
-    assert_select 'h1', 'Your Progmatic Catalog'
+    assert_select 'h1', 'Your Pragmatic Catalog'
   end
 end

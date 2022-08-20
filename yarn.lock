@@ -1849,6 +1849,7 @@ __metadata:
     "@rails/webpacker": 5.4.3
     babel-plugin-macros: ^3.1.0
     babel-plugin-transform-react-remove-prop-types: ^0.4.24
+    i18n-js: ^4.0.2
     prop-types: ^15.8.1
     react: ^18.2.0
     react-dom: ^18.2.0
@@ -2273,6 +2274,13 @@ __metadata:
   version: 5.2.2
   resolution: "big.js@npm:5.2.2"
   checksum: b89b6e8419b097a8fb4ed2399a1931a68c612bce3cfd5ca8c214b2d017531191070f990598de2fc6f3f993d91c0f08aa82697717f6b3b8732c9731866d233c9e
+  languageName: node
+  linkType: hard
+
+"bignumber.js@npm:*":
+  version: 9.1.0
+  resolution: "bignumber.js@npm:9.1.0"
+  checksum: 52ec2bb5a3874d7dc1a1018f28f8f7aff4683515ffd09d6c2d93191343c76567ae0ee32cc45149d53afb2b904bc62ed471a307b35764beea7e9db78e56bef6c6
   languageName: node
   linkType: hard
 
@@ -4896,6 +4904,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"i18n-js@npm:^4.0.2":
+  version: 4.0.2
+  resolution: "i18n-js@npm:4.0.2"
+  dependencies:
+    bignumber.js: "*"
+    lodash: "*"
+  checksum: dae7c264d4d9b047b1cb0b57d7d1e6b0f2dcec45f0d738d30a51a6b07e5b4bc535be0afa27a6c64e5c74d2e8a391c9fde107cb958d2658fd1fb1b9ff55e1a47d
+  languageName: node
+  linkType: hard
+
 "iconv-lite@npm:0.4.24":
   version: 0.4.24
   resolution: "iconv-lite@npm:0.4.24"
@@ -5776,7 +5794,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash@npm:^4.17.11, lodash@npm:^4.17.14, lodash@npm:^4.17.5":
+"lodash@npm:*, lodash@npm:^4.17.11, lodash@npm:^4.17.14, lodash@npm:^4.17.5":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: eb835a2e51d381e561e508ce932ea50a8e5a68f4ebdd771ea240d3048244a8d13658acbd502cd4829768c56f2e16bdd4340b9ea141297d472517b83868e677f7
