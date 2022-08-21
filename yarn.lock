@@ -1462,6 +1462,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@rails/actiontext@npm:^6.1.6":
+  version: 6.1.6
+  resolution: "@rails/actiontext@npm:6.1.6"
+  dependencies:
+    "@rails/activestorage": ^6.0.0
+  peerDependencies:
+    trix: ^1.2.0
+  checksum: 8ef0fe41c5b971ef5211e0c07f5cee7868a38deb8b0fa6b2b387248f7e963065fe3de43f348b8ee6f09a2a9b91bdc02e7c63ae2cd456b8b793b127b89ee8be71
+  languageName: node
+  linkType: hard
+
 "@rails/activestorage@npm:^6.0.0":
   version: 6.0.5
   resolution: "@rails/activestorage@npm:6.0.5"
@@ -1844,6 +1855,7 @@ __metadata:
     "@babel/plugin-transform-destructuring": ^7.18.6
     "@babel/preset-react": ^7.18.6
     "@rails/actioncable": ^6.0.0
+    "@rails/actiontext": ^6.1.6
     "@rails/activestorage": ^6.0.0
     "@rails/ujs": ^6.0.0
     "@rails/webpacker": 5.4.3
@@ -1853,6 +1865,7 @@ __metadata:
     prop-types: ^15.8.1
     react: ^18.2.0
     react-dom: ^18.2.0
+    trix: ^1.2.0
     turbolinks: ^5.2.0
     webpack: ^4.46.0
     webpack-cli: ^3.3.12
@@ -9314,6 +9327,13 @@ __metadata:
   version: 1.0.1
   resolution: "toidentifier@npm:1.0.1"
   checksum: 952c29e2a85d7123239b5cfdd889a0dde47ab0497f0913d70588f19c53f7e0b5327c95f4651e413c74b785147f9637b17410ac8c846d5d4a20a5a33eb6dc3a45
+  languageName: node
+  linkType: hard
+
+"trix@npm:^1.2.0":
+  version: 1.3.1
+  resolution: "trix@npm:1.3.1"
+  checksum: b4c6426d6fa78b09d6007cd627c10fe4f21a4f02abcd0266f6c34d16b030a328f1526ba5928c7ee315a48de54e9deb317ada31c3f8eccc0629a1ed67896f8692
   languageName: node
   linkType: hard
 
